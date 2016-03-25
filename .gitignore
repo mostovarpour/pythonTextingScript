@@ -1,0 +1,11 @@
+Debug/
+Release/
+debug/
+release/
+build/
+*.user
+*.opensdf
+*.sdf
+*.suo
+*.filters
+.ycm*
