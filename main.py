@@ -1,4 +1,5 @@
-__author__ = 'Luis Valenzuela'
+__author0__ = 'Matthew Ostovarpour'
+__author1__ = 'Luis Valenzuela'
 
 import smtplib
 import time
