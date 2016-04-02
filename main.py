@@ -9,31 +9,38 @@ from time import gmtime, strftime, localtime
 username = 'pythonprogram123@gmail.com'
 password = 'python123'
 fromaddr = 'pythonprogram123@gmail.com'
-toaddrs = 'lav62@nau.edu'
+toaddrs = 'PlaceHolder'
 msg = 'Hello!'
+download_path = "C:\\Users\\PlaceHolder\\Downloads"
+
 
 def main():
-    files = os.listdir("C:\\Users\\lav62\\Downloads")
-    while(1):
-        newFiles = os.listdir("C:\\Users\\lav62\\Downloads")
+    files = os.listdir(download_path)
+    while 1:
+        new_files = os.listdir(download_path)
 
-        for newFile in newFiles:
-            if newFile not in files:
-                if newFile.endswith('.crdownload'):
-                    doneTextSend("New file named " + newFile + " ")
+        for file in new_files:
+            if file not in files:
+                if file.endswith('.crdownload'):
+                    send_email("New Download", "New file is downloading.")
+                else:
+                    if not file.endswith('.tmp'):
+                        files = os.listdir(download_path)
+                        send_email("Finished Download", file + " is finished downloading")
+        time.sleep(5)
 
 
-
-
-
-def doneTextSend(message):
+def send_email(subject,message):
+    print("Sending Message\n")
+    signature = "- PyBot"
+    message = 'Subject: %s\n\n%s\n\n%s' % (subject, message, signature)
 
     # The actual mail send
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
     server.login(username, password)
-    server.sendmail(fromaddr, toaddrs, msg)
+    server.sendmail(fromaddr, toaddrs, message)
     server.quit()
 
-doneTextSend()
+main()
