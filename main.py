@@ -9,9 +9,9 @@ from time import gmtime, strftime, localtime
 username = 'pythonprogram123@gmail.com'
 password = 'python123'
 fromaddr = 'pythonprogram123@gmail.com'
-toaddrs = 'PlaceHolder'
+toaddrs = 'matt.ostovarpour@gmail.com'
 msg = 'Hello!'
-download_path = "C:\\Users\\PlaceHolder\\Downloads"
+download_path = "/home/matthew/Downloads"
 
 
 def main():
@@ -21,7 +21,9 @@ def main():
 
         for file in new_files:
             if file not in files:
-                if file.endswith('.crdownload'):
+                if file.endswith('.crdownload'):#Google Chrome Downloads
+                    send_email("New Download", "New file is downloading.")
+                elif file.endswith('.partial'):#Internet Explorer Downloads
                     send_email("New Download", "New file is downloading.")
                 else:
                     if not file.endswith('.tmp'):
